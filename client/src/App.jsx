@@ -1,9 +1,16 @@
-import Home from "./components/Home/Home";
+
+import Home from './components/home/Home';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 
 export default function App() {
 
   return (
-    <Home/>
+    <div>
+      <Header/>
+      <Home/>
+      <Footer/>
+    </div>
   )
 }
 
