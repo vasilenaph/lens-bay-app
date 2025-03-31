@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Logo / Branding */}
           <div className="mb-4 md:mb-0">
             <a href="/" className="text-white text-lg font-semibold">
-              Your Company
+              LensBay
             </a>
             <p className="text-sm mt-1">© {new Date().getFullYear()} All rights reserved.</p>
           </div>
