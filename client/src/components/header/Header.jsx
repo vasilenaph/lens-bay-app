@@ -5,10 +5,10 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
+  { name: 'Home', href: '#' },
   { name: 'Cameras', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'Add Camera', href: '#' },
+  { name: 'About', href: '#' },
 ]
 
 export default function Header() {
@@ -19,7 +19,7 @@ export default function Header() {
         <nav className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">LensBay</span>
               <img
                 className="h-8 w-auto"
                 src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=400"

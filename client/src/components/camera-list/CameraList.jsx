@@ -12,18 +12,8 @@ const cameras = [
 export default function Cameras() {
   return (
     <div className="bg-gray-900 min-h-screen flex flex-col items-center">
-      {/* Header */}
-      <header className="w-full fixed top-0 bg-gray-900 shadow-md z-50">
-        <nav className="flex items-center justify-between w-full max-w-7xl mx-auto px-6 py-4">
-          <a href="#" className="text-lg font-semibold text-white">Your Company</a>
-          <a href="/" className="text-sm font-semibold text-indigo-400 hover:text-indigo-300">
-            Back to Home
-          </a>
-        </nav>
-      </header>
-
       {/* Main Content */}
-      <main className="w-full max-w-7xl mx-auto pt-24 px-6">
+      <div className="w-full max-w-7xl mx-auto pt-24 px-6">
         <h2 className="text-4xl font-bold text-center text-white mb-10">Available Cameras</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
           {cameras.map((camera) => (
@@ -43,7 +33,7 @@ export default function Cameras() {
             </div>
           ))}
         </div>
-      </main>
+      </div>
     </div>
   )
 }
