@@ -12,6 +12,7 @@ const cameras = [
 export default function Cameras() {
   return (
     <div className="bg-gray-900 min-h-screen flex flex-col items-center">
+
       {/* Main Content */}
       <div className="w-full max-w-7xl mx-auto pt-24 px-6">
         <h2 className="text-4xl font-bold text-center text-white mb-10">Available Cameras</h2>

@@ -1,0 +1,45 @@
+export default function SignIn() {
+    return (
+        <div className="bg-gray-900 min-h-screen flex items-center justify-center px-6 py-12">
+            <div className="bg-gray-800 rounded-xl shadow-lg p-8 w-full max-w-md">
+                <h2 className="text-2xl font-bold text-white mb-6 text-center">
+                    Sign In
+                </h2>
+
+                <form className="space-y-4">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-300 mb-1">
+                            Email Address
+                        </label>
+                        <input
+                            type="email"
+                            defaultValue="user@example.com"
+                            className="w-full rounded-md border border-gray-700 bg-gray-900 text-white px-4 py-2"
+                            readOnly
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-300 mb-1">
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            defaultValue="••••••••"
+                            className="w-full rounded-md border border-gray-700 bg-gray-900 text-white px-4 py-2"
+                            readOnly
+                        />
+                    </div>
+
+                    <button
+                        type="button"
+                        className="w-full mt-4 bg-indigo-600 text-white font-semibold py-2.5 rounded-md shadow-md cursor-not-allowed opacity-50"
+                        disabled
+                    >
+                        Sign In
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
+}
