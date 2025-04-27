@@ -2,7 +2,7 @@ const router = require('express').Router();
 const cameraService = require('../services/cameraService');
 
 router.get('/create', (req, res) => {
-    res.json('create');
+    res.json({ page: 'create' }); 
 });
 
 router.post('/create', (req, res) => {
@@ -10,7 +10,7 @@ router.post('/create', (req, res) => {
 
     cameraService.create(newCamera);
 
-    res.json('Movie should be created');
+    res.redirect('/');
 });
 
 module.exports = router;
