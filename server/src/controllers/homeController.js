@@ -6,6 +6,10 @@ router.get('/', (req, res) => {
 
 router.get('/about', (req, res) => {
     res.json('about');
-})
+});
+
+router.get('/not-found', (req, res) => {
+    res.json('not-found');
+});
 
 module.exports = router;
