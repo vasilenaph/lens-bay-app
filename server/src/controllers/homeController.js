@@ -1,9 +1,7 @@
 const router = require('express').Router();
-const cameraService = require('../services/cameraService');
 
 router.get('/', (req, res) => {
-    const cameras = cameraService.getAll();
-    res.json(cameras); 
+    res.json({ page: 'home' }); 
 });
 
 router.get('/about', (req, res) => {
