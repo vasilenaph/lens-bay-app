@@ -18,3 +18,7 @@ exports.create = async (cameraData) => {
     const result = await Camera.create(cameraData);
     return result;
 }
+
+exports.edit = async (cameraId, cameraData) => {
+    return Camera.findByIdAndUpdate(cameraId, cameraData, { new: true });
+};
