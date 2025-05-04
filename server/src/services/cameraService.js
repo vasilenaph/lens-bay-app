@@ -11,10 +11,8 @@ exports.getAll = async () => {
 }
 
 exports.getById = (cameraId) => {
-    const camera = cameras.find(camera => camera._id == cameraId);
-
-    return camera;
-}
+    return Camera.findById(cameraId); 
+};
 
 exports.create = async (cameraData) => {
     const result = await Camera.create(cameraData);

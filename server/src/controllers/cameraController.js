@@ -11,7 +11,6 @@ router.get('/cameras', async (req, res) => {
     }
 });
 
-
 router.get('/create', (req, res) => {
     res.json({ page: 'create' }); 
 });
@@ -29,15 +28,21 @@ router.post('/create', async (req, res) => {
     }
 });
 
-router.get('/cameras/:cameraId', (req, res) => {
+router.get('/cameras/:cameraId', async (req, res) => {
     const cameraId = req.params.cameraId;
-    const camera = cameraService.getById(cameraId); 
 
-    if (!camera) {
-        return res.status(404).json({ message: 'Camera not found' });
+    try {
+        const camera = await cameraService.getById(cameraId);
+
+        if (!camera) {
+            return res.status(404).json({ message: 'Camera not found' });
+        }
+
+        res.json(camera);
+    } catch (error) {
+        console.error('Error fetching camera:', error);
+        res.status(500).json({ message: 'Server error' });
     }
-
-    res.json(camera);
 });
 
 module.exports = router;
