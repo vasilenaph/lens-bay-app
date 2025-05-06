@@ -12,7 +12,6 @@ const navigation = [
 ]
 
 export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div className="relative isolate px-6 pt-14 lg:px-8 min-h-screen">
