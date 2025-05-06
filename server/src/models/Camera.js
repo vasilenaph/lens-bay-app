@@ -6,7 +6,7 @@ const cameraSchema = new mongoose.Schema({
         required: true
     },
     description: {
-        type: String, // <-- optional but useful
+        type: String, 
         required: false
     },
     sensor: {
