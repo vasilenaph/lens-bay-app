@@ -17,8 +17,8 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow">
-        <Home/>
-        {/* <CameraList/> */}
+        {/* <Home/> */}
+        <CameraList/>
         {/* <CameraListItem/> */}
         {/* <CameraDetails/> */}
         {/* <CreateCamera/> */}
