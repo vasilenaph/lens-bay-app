@@ -11,7 +11,7 @@ exports.getAll = async () => {
 }
 
 exports.getById = (cameraId) => {
-    return Camera.findById(cameraId); 
+    return Camera.findById(cameraId);
 };
 
 exports.create = async (cameraData) => {
@@ -21,4 +21,8 @@ exports.create = async (cameraData) => {
 
 exports.edit = async (cameraId, cameraData) => {
     return Camera.findByIdAndUpdate(cameraId, cameraData, { new: true });
+};
+
+exports.delete = async (cameraId) => {
+    return await Camera.findByIdAndDelete(cameraId);
 };
