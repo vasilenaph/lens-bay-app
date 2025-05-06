@@ -11,11 +11,11 @@ router.get('/cameras', async (req, res) => {
     }
 });
 
-router.get('/create', (req, res) => {
+router.get('/cameras/create', (req, res) => {
     res.json({ page: 'create' });
 });
 
-router.post('/create', async (req, res) => {
+router.post('/cameras/create', async (req, res) => {
     const newCamera = req.body;
 
     try {
@@ -79,5 +79,22 @@ router.post('/cameras/:cameraId/edit', async (req, res) => {
         res.status(500).json({ message: 'Failed to update camera' });
     }
 });
+
+router.get('/cameras/:cameraId/delete', async (req, res) => {
+    const cameraId = req.params.cameraId;
+
+    try {
+        const deletedCamera = await cameraService.delete(cameraId);
+
+        if(!deletedCamera) {
+            return res.status(404).json({message: 'Camera not found!'});
+        }
+
+        res.status(200).json({message: 'Camera deleted succesfully'});
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Failed to delete camera' });
+    }
+})
 
 module.exports = router;
