@@ -1,23 +1,19 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const { SECRET } = require('../config/config');
-
+const { generateToken } = require('../config/jwt');
 
 router.post('/sign-up', async (req, res) => {
     try {
         const { email, password } = req.body;
 
         const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ message: 'User already exists' });
-        }
+        if (existingUser) return res.status(400).json({ message: 'User already exists' });
 
         const hash = await bcrypt.hash(password, 10);
         const user = await User.create({ email, password: hash });
 
-        const token = jwt.sign({ id: user._id, email: user.email }, SECRET, { expiresIn: '1h' });
+        const token = generateToken({ id: user._id, email: user.email });
 
         res.status(201).json({
             message: 'User created',
@@ -39,7 +35,7 @@ router.post('/sign-in', async (req, res) => {
         const isValid = await bcrypt.compare(password, user.password);
         if (!isValid) return res.status(400).json({ message: 'Invalid email or password' });
 
-        const token = jwt.sign({ id: user._id, email: user.email }, SECRET, { expiresIn: '1h' });
+        const token = generateToken({ id: user._id, email: user.email });
 
         res.json({
             message: 'Login successful',
