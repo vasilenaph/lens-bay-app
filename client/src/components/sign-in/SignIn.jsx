@@ -13,9 +13,8 @@ export default function SignIn() {
                         </label>
                         <input
                             type="email"
-                            defaultValue="user@example.com"
+                            placeholder="user@example.com"
                             className="w-full rounded-md border border-gray-700 bg-gray-900 text-white px-4 py-2"
-                            readOnly
                         />
                     </div>
 
@@ -25,16 +24,14 @@ export default function SignIn() {
                         </label>
                         <input
                             type="password"
-                            defaultValue="••••••••"
+                            placeholder="••••••••"
                             className="w-full rounded-md border border-gray-700 bg-gray-900 text-white px-4 py-2"
-                            readOnly
                         />
                     </div>
 
                     <button
                         type="button"
                         className="w-full mt-4 bg-indigo-600 text-white font-semibold py-2.5 rounded-md shadow-md cursor-not-allowed opacity-50"
-                        disabled
                     >
                         Sign In
                     </button>
