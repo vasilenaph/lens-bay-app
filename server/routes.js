@@ -6,7 +6,7 @@ const userController = require('./src/controllers/userController');
 
 router.use(homeController);
 router.use(cameraController);
-router.use(userController);
+router.use('/api/users', userController);
 
 router.get('*', (req, res) => {
     res.redirect('/not-found');

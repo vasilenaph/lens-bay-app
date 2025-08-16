@@ -15,8 +15,8 @@ router.post('/sign-up', async (req, res) => {
 
         const token = generateToken({ id: user._id, email: user.email });
 
+        // Send back only the token and user info
         res.status(201).json({
-            message: 'User created',
             user: { id: user._id, email: user.email },
             token
         });
