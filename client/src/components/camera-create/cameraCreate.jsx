@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import { useCameras } from '../../context/CameraContext'; 
+import { useCamerasContext  } from '../../context/CameraContext';
 
 export default function CreateCamera() {
-  const { addCamera } = useCameras();
+  const { addCamera } = useCamerasContext();
 
   const [cameraData, setCameraData] = useState({
-    name: '',
+    title: '',
+    description: '',
     price: '',
     imageUrl: '',
     sensor: '',
     megapixels: '',
-    iso: '',
+    isoRange: '',
     video: '',
     connectivity: ''
   });
@@ -22,14 +23,15 @@ export default function CreateCamera() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addCamera(cameraData); 
+    addCamera(cameraData);
     setCameraData({
-      name: '',
+      title: '',
+      description: '',
       price: '',
       imageUrl: '',
       sensor: '',
       megapixels: '',
-      iso: '',
+      isoRange: '',
       video: '',
       connectivity: ''
     });
@@ -54,7 +56,7 @@ export default function CreateCamera() {
                 value={value}
                 onChange={handleChange}
                 className="w-full rounded-md border border-gray-700 bg-gray-900 text-white px-4 py-2"
-                required
+                required={key !== 'description'} // description is optional
               />
             </div>
           ))}
@@ -68,5 +70,5 @@ export default function CreateCamera() {
         </form>
       </div>
     </div>
-  )
+  );
 }
