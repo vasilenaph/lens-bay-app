@@ -8,10 +8,11 @@ exports.getById = (cameraId) => {
     return Camera.findById(cameraId);
 };
 
+
 exports.create = async (cameraData) => {
-    const result = await Camera.create(cameraData);
-    return result;
-}
+    const camera = new Camera(cameraData);
+    return await camera.save();  
+};
 
 exports.edit = async (cameraId, cameraData) => {
     return Camera.findByIdAndUpdate(cameraId, cameraData, { new: true });
