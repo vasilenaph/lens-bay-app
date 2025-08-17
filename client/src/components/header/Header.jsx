@@ -34,7 +34,9 @@ export default function Header() {
         <div className="hidden lg:flex lg:gap-x-12">
           <Link to="/" className="text-sm font-semibold text-gray-300 hover:text-white">Home</Link>
           <Link to="/cameras" className="text-sm font-semibold text-gray-300 hover:text-white">Cameras</Link>
-          <Link to="/cameras/create" className="text-sm font-semibold text-gray-300 hover:text-white">Add Camera</Link>
+          {user && (
+            <Link to="/cameras/create" className="text-sm font-semibold text-gray-300 hover:text-white">Add Camera</Link>
+          )}
           <Link to="/about" className="text-sm font-semibold text-gray-300 hover:text-white">About</Link>
         </div>
 
@@ -82,7 +84,9 @@ export default function Header() {
           <div className="space-y-4">
             <Link to="/" className="block text-white hover:text-blue-400" onClick={() => setMobileMenuOpen(false)}>Home</Link>
             <Link to="/cameras" className="block text-white hover:text-blue-400" onClick={() => setMobileMenuOpen(false)}>Cameras</Link>
-            <Link to="/cameras/create" className="block text-white hover:text-blue-400" onClick={() => setMobileMenuOpen(false)}>Add Camera</Link>
+            {user && (
+              <Link to="/cameras/create" className="block text-white hover:text-blue-400" onClick={() => setMobileMenuOpen(false)}>Add Camera</Link>
+            )}
             <Link to="/about" className="block text-white hover:text-blue-400" onClick={() => setMobileMenuOpen(false)}>About</Link>
             <hr className="border-gray-700 my-4" />
             {user ? (
