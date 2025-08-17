@@ -16,7 +16,7 @@ export default function SignIn() {
             navigate("/");
         } catch (err) {
             console.error(err);
-            setError(err.message || "Invalid credentials"); // 👈 show error inline
+            setError(err.message || "Invalid credentials"); 
         }
     };
 
