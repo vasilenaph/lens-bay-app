@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const cameraService = require('../services/cameraService');
 
-router.get('/cameras', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const cameras = await cameraService.getAll();
         res.json(cameras);
@@ -11,20 +11,17 @@ router.get('/cameras', async (req, res) => {
     }
 });
 
-router.get('/cameras/create', (req, res) => {
+router.get('/create', (req, res) => {
     res.json({ page: 'create' });
 });
 
-router.post('/cameras/create', async (req, res) => {
-    const newCamera = req.body;
-
+router.post('/create', async (req, res) => {
     try {
-        await cameraService.create(newCamera);
-
-        res.status(201).json({ message: 'Camera created' });
+        const createdCamera = await cameraService.create(req.body);
+        res.status(201).json(createdCamera);  
     } catch (err) {
-        console.log(err.message)
-        res.status(404).end();
+        console.error("Create camera error:", err);
+        res.status(500).json({ message: 'Failed to create camera' });
     }
 });
 
