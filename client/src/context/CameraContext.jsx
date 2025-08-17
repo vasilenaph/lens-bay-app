@@ -1,21 +1,29 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import camerasApi from "../api/camera-api";
 
 const CameraContext = createContext();
 
 export function CameraProvider({ children }) {
-  const [cameras, setCameras] = useState(() => {
-    const saved = localStorage.getItem("cameras");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [cameras, setCameras] = useState([]);
 
-  const addCamera = (camera) => {
-    setCameras(prev => {
-      const updated = [...prev, camera];
+  useEffect(() => {
+    (async () => {
+      try {
+        const result = await camerasApi.getAll();
+        setCameras(result);
+      } catch (err) {
+        console.error("Failed to fetch cameras:", err);
+      }
+    })();
+  }, []);
 
-      localStorage.setItem("cameras", JSON.stringify(updated)); // save to localStorage
-
-      return updated;
-    });
+  const addCamera = async (cameraData) => {
+    try {
+      const newCamera = await camerasApi.createCamera(cameraData);
+      setCameras((prev) => [...prev, newCamera]);
+    } catch (err) {
+      console.error("Failed to create camera:", err);
+    }
   };
 
   return (
@@ -25,6 +33,6 @@ export function CameraProvider({ children }) {
   );
 }
 
-export function useCameras() {
+export function useCamerasContext() {
   return useContext(CameraContext);
 }
