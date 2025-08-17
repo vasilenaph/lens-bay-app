@@ -11,35 +11,38 @@ import SignIn from './components/sign-in/SignIn';
 import SignUp from './components/sign-up/SignUp';
 import CameraDetails from './components/camera-details/CameraDetails';
 import PrivateGuard from './components/common/PrivateGuard';
+import { CameraProvider } from './context/CameraContext';
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/cameras" element={<CameraList />} />
-          <Route path="/cameras/:cameraId" element={<CameraDetails />} />
+    <CameraProvider>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow">
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/cameras" element={<CameraList />} />
+            <Route path="/cameras/:cameraId" element={<CameraDetails />} />
 
-          {/* Auth Routes */}
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
+            {/* Auth Routes */}
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
 
-          {/* Protected Routes */}
-          <Route element={<PrivateGuard />}>
-            <Route path="/cameras/create" element={<CreateCamera />} />
-          </Route>
+            {/* Protected Routes */}
+            <Route element={<PrivateGuard />}>
+              <Route path="/cameras/create" element={<CreateCamera />} />
+            </Route>
 
-          {/* Other Routes */}
-          <Route path="/about" element={<About />} />
+            {/* Other Routes */}
+            <Route path="/about" element={<About />} />
 
-          {/* 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </CameraProvider>
   );
 }
