@@ -1,7 +1,8 @@
-import { useCamerasContext } from '../../context/CameraContext';
+import { useCameras } from '../../context/CameraContext';
+
 
 export default function Cameras() {
-  const { cameras } = useCamerasContext(); 
+  const { cameras } = useCameras(); 
 
   return (
     <div className="bg-gray-900 min-h-screen flex flex-col items-center">
