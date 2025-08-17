@@ -1,8 +1,6 @@
-import { useCameras } from '../../context/CameraContext';
-
+import { useCamerasContext } from '../../context/CameraContext';
 
 export default function Cameras() {
-  const { cameras } = useCameras(); 
   const { cameras } = useCamerasContext();
 
   return (
