@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useCamerasContext } from '../../context/CameraContext'; 
+import { useCameras } from '../../context/CameraContext'; 
 
 export default function CreateCamera() {
-  const { addCamera } = useCamerasContext();
+  const { addCamera } = useCameras();
 
   const [cameraData, setCameraData] = useState({
     name: '',
